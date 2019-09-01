@@ -2,10 +2,12 @@ D:\Github\Drink_Proj\bin\Debug\Drink_Proj.exe.config
 D:\Github\Drink_Proj\bin\Debug\Drink_Proj.exe
 D:\Github\Drink_Proj\bin\Debug\Drink_Proj.pdb
 D:\Github\Drink_Proj\obj\Debug\Drink_Proj.csprojAssemblyReference.cache
-D:\Github\Drink_Proj\obj\Debug\Drink_Proj.Form1.resources
 D:\Github\Drink_Proj\obj\Debug\Drink_Proj.Properties.Resources.resources
 D:\Github\Drink_Proj\obj\Debug\Drink_Proj.csproj.GenerateResource.cache
 D:\Github\Drink_Proj\obj\Debug\Drink_Proj.csproj.CoreCompileInputs.cache
 D:\Github\Drink_Proj\obj\Debug\Drink_Proj.exe
 D:\Github\Drink_Proj\obj\Debug\Drink_Proj.pdb
-D:\Github\Drink_Proj\obj\Debug\Drink_Proj.DrinkList.resources
+D:\Github\Drink_Proj\bin\Debug\Common.dll
+D:\Github\Drink_Proj\bin\Debug\Common.pdb
+D:\Github\Drink_Proj\obj\Debug\Drink_Proj.csproj.CopyComplete
+D:\Github\Drink_Proj\obj\Debug\Drink_Proj.MainForm.resources

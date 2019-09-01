@@ -1,0 +1,6 @@
+D:\Github\Common\bin\Debug\Common.dll
+D:\Github\Common\bin\Debug\Common.pdb
+D:\Github\Common\obj\Debug\Common.csprojAssemblyReference.cache
+D:\Github\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+D:\Github\Common\obj\Debug\Common.dll
+D:\Github\Common\obj\Debug\Common.pdb
