@@ -1,3 +1,6 @@
 Drink_Proj/bin/Debug
 Common/bin/Debug
+Drink_Proj/obj/Debug
+Common/obj/Debug
 .vs/
+**/Server/*
