@@ -15,7 +15,8 @@ namespace Common
         public void Bind()
         {
             btnDatas = GetBtnData();
-            SetButtonEvent(this.FindForm().Controls.Find("groupBox1", false).SingleOrDefault());
+            foreach(var groupBox in this.FindForm().Controls.OfType<GroupBox>())
+                SetButtonEvent(groupBox);
         }
         public void SetButtonEvent(Control control)
         {
@@ -25,7 +26,7 @@ namespace Common
             button.ForEach(x => { x.Click += new EventHandler(Button_Click);x.Text = GetText(x.Name); });
 
         }
-        public void GetListView(Form form)
+        public void GetListView(Control control)
         {
 
         }
