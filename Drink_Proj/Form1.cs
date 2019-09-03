@@ -19,14 +19,14 @@ namespace Drink_Proj
         public MainForm()
         {
             InitializeComponent();
-            Bind();
+            Bind(); 
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             this.Size = new Size(1000, 500);
 
-            for (int i = 0; i < 100 ; i++)
+            for (int i = 0; i < 100; i++)
             {
                 // Start Update
                 listView1.BeginUpdate();
@@ -40,6 +40,13 @@ namespace Drink_Proj
                 listView1.EndUpdate();
 
             }
+        }
+
+        public override void Button_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            BtnData btnData = btnDatas.Where(x => x.Name == btn.Name).SingleOrDefault();
+
         }
         private void BtnBuy_Click(object sender, EventArgs e)
         {

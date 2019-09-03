@@ -11,14 +11,14 @@ namespace Common
 {
     public class BaseForm:Form
     {
-        List<BtnData> btnDatas;
+        public List<BtnData> btnDatas;
         public void Bind()
         {
             btnDatas = GetBtnData();
             foreach(var groupBox in this.FindForm().Controls.OfType<GroupBox>())
                 SetButtonEvent(groupBox);
         }
-        public void SetButtonEvent(Control control)
+        private void SetButtonEvent(Control control)
         {
             //取得form下的Button控制項
             var button = control.Controls.OfType<Button>().ToList();
@@ -26,14 +26,7 @@ namespace Common
             button.ForEach(x => { x.Click += new EventHandler(Button_Click);x.Text = GetText(x.Name); });
 
         }
-        public void GetListView(Control control)
-        {
-
-        }
-        public void Button_Click(object sender, EventArgs e)
-        {
-
-        }
+        public virtual void Button_Click(object sender, EventArgs e) { }
         /// <summary>
         /// 實例化 BtnData 物件
         /// </summary>
