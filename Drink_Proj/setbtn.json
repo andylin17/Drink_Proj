@@ -25,14 +25,62 @@
 	},
 	{
 		"Index": "4",
-		"Text": "紅茶",
+		"Text": "紅茶2",
 		"Price": 60,
 		"Group": "純茶類"
 	},
 	{
 		"Index": "5",
-		"Text": "紅茶",
+		"Text": "紅茶3",
 		"Price": 65,
 		"Group": "純茶類"
+	},
+	{
+		"Index": "0",
+		"Text": "珍珠",
+		"Price": 5,
+		"Group": "配料"
+	},
+	{
+		"Index": "1",
+		"Text": "波霸",
+		"Price": 10,
+		"Group": "配料"
+	},
+	{
+		"Index": "2",
+		"Text": "椰果",
+		"Price": 10,
+		"Group": "配料"
+	},
+	{
+		"Index": "3",
+		"Text": "布丁",
+		"Price": 15,
+		"Group": "配料"
+	},
+	{
+		"Index": "4",
+		"Text": "咖啡凍",
+		"Price": 10,
+		"Group": "配料"
+	},
+	{
+		"Index": "5",
+		"Text": "仙草",
+		"Price": 12,
+		"Group": "配料"
+	},
+	{
+		"Index": "6",
+		"Text": "待補2",
+		"Price": 13,
+		"Group": "配料"
+	},
+	{
+		"Index": "7",
+		"Text": "待補3",
+		"Price": 14,
+		"Group": "配料"
 	},
 ]

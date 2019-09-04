@@ -11,6 +11,10 @@ namespace Common
 {
     public class BaseForm:Form
     {
+        public delegate void MoneyCalculate(int i);
+
+        public event MoneyCalculate TotalMoney;
+
         public List<BtnData> btnDatas;
         public void Bind()
         {
@@ -21,7 +25,7 @@ namespace Common
         private void SetButtonEvent(Control control)
         {
             //取得form下的Button控制項
-            var button = control.Controls.OfType<Button>().Reverse().ToList(); 
+            var button = control.Controls.OfType<Button>().OrderBy(x=>x.TabIndex).ToList(); 
             //綁定事件
             button.ForEach(x => { x.Click += new EventHandler(Button_Click);x.Text = GetText(control.Text,button.IndexOf(x).ToString()); });
 
@@ -52,6 +56,14 @@ namespace Common
             {
                 return index;//重複or 空值...回傳index
             }
+        }
+        /// <summary>
+        /// 觸發 TotalMoney 事件
+        /// </summary>
+        /// <param name="price"></param>
+        public void DoCalculate(int price)
+        {
+            TotalMoney?.Invoke(price);
         }
     }
 }
