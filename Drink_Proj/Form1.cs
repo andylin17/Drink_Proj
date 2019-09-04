@@ -45,7 +45,7 @@ namespace Drink_Proj
         public override void Button_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
-            BtnData btnData = btnDatas.Where(x => x.Name == btn.Name).SingleOrDefault();
+            BtnData btnData = btnDatas.Where(x => x.Text == btn.Text).SingleOrDefault();
 
         }
         private void BtnBuy_Click(object sender, EventArgs e)

@@ -21,9 +21,9 @@ namespace Common
         private void SetButtonEvent(Control control)
         {
             //取得form下的Button控制項
-            var button = control.Controls.OfType<Button>().ToList();
+            var button = control.Controls.OfType<Button>().Reverse().ToList(); 
             //綁定事件
-            button.ForEach(x => { x.Click += new EventHandler(Button_Click);x.Text = GetText(x.Name); });
+            button.ForEach(x => { x.Click += new EventHandler(Button_Click);x.Text = GetText(control.Text,button.IndexOf(x).ToString()); });
 
         }
         public virtual void Button_Click(object sender, EventArgs e) { }
@@ -39,17 +39,18 @@ namespace Common
         /// <summary>
         /// 設置Button 的 Text
         /// </summary>
-        /// <param name="name">ID</param>
+        /// <param name="group">群組</param>
+        /// <param name="index">Index</param>
         /// <returns>Text</returns>
-        private string GetText(string name)
+        private string GetText(string group ,string index)
         {
             try
-            {   //select x.Text from btnDatas as x where x.Name == name
-                return btnDatas.Where(x => x.Name == name).Select(x => x.Text).Single();
+            {   //select x.Text from btnDatas as x where x.Group == group && x.Index == index
+                return btnDatas.Where(x => x.Group == group && x.Index == index).Select(x => x.Text).Single();
             }
             catch
             {
-                return name;//重複or 空值...回傳ID
+                return index;//重複or 空值...回傳index
             }
         }
     }

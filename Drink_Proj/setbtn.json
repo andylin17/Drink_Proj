@@ -1,36 +1,36 @@
 [
 	{
-		"Name": "newButton1",
+		"Index": "0",
 		"Text": "綠茶",
 		"Price": 35,
 		"Group": "純茶類"
 	},
 	{
-		"Name": "newButton2",
+		"Index": "1",
 		"Text": "紅茶",
 		"Price": 30,
 		"Group": "純茶類"
 	},
 	{
-		"Name": "newButton3",
+		"Index": "2",
 		"Text": "清茶",
 		"Price": 40,
 		"Group": "純茶類"
 	},
 	{
-		"Name": "newButton4",
+		"Index": "3",
 		"Text": "烏龍茶",
 		"Price": 45,
 		"Group": "純茶類"
 	},
 	{
-		"Name": "newButton5",
+		"Index": "4",
 		"Text": "紅茶",
 		"Price": 60,
 		"Group": "純茶類"
 	},
 	{
-		"Name": "newButton6",
+		"Index": "5",
 		"Text": "紅茶",
 		"Price": 65,
 		"Group": "純茶類"
