@@ -16,6 +16,9 @@ namespace Common
         public event MoneyCalculate TotalMoney;
 
         public List<BtnData> btnDatas;
+        /// <summary>
+        /// 綁定 button 屬性
+        /// </summary>
         public void Bind()
         {
             btnDatas = GetBtnData();

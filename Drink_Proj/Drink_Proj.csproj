@@ -103,5 +103,14 @@
   <ItemGroup>
     <None Include="Properties\sort-up.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\sort-down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\iconfinder_arrow-down-circle_3313573.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\iconfinder_arrow-up-circle_3313574.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -25,8 +25,12 @@ namespace Drink_Proj
         }
         //傳進來的飲料物件
         public BtnData drink { get; set; }
+        //
+        private BtnData btnData;
         //總價
         public int Money { get; set; }
+        //數量
+        private int Amount = 1;
         //用來插入 ListViewItem
         public string[] lvItem { get; set; }
         //配料名稱
@@ -35,18 +39,31 @@ namespace Drink_Proj
         public override void Button_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
-            BtnData btnData = btnDatas.Where(x => x.Text == btn.Text).SingleOrDefault();
-            DoCalculate(btnData.Price);
+            btnData = btnDatas.Where(x => x.Text == btn.Text).SingleOrDefault();
             subname = "+" + btnData.Text;
         }
+        //計算價錢
         public void GetPrice(int price)
         {
-            Money = drink.Price + price;
+            Money = (drink.Price + price) * Amount;
         }
-
+        //關掉視窗時，存ListViewItem 字串[]
         private void confirm_Click(object sender, EventArgs e)
         {
+            DoCalculate(btnData?.Price ?? 0);//if nul that 0
             lvItem = new string[] { drink.Text + subname, textBox1.Text, Money.ToString() };
+        }
+        //數量+1
+        private void up_Click(object sender, EventArgs e)
+        {
+            Amount += 1;
+            textBox1.Text = Amount.ToString();
+        }
+        //數量-1
+        private void down_Click(object sender, EventArgs e)
+        {
+            Amount = Amount > 1 ? Amount- 1 : 1;
+            textBox1.Text = Amount.ToString();
         }
     }
 }
