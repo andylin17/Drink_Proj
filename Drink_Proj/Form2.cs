@@ -51,19 +51,6 @@ namespace Drink_Proj
         private void confirm_Click(object sender, EventArgs e)
         {
             DoCalculate(btnData?.Price ?? 0);//if nul that 0
-            lvItem = new string[] { drink.Text + subname, textBox1.Text, Money.ToString() };
-        }
-        //數量+1
-        private void up_Click(object sender, EventArgs e)
-        {
-            Amount += 1;
-            textBox1.Text = Amount.ToString();
-        }
-        //數量-1
-        private void down_Click(object sender, EventArgs e)
-        {
-            Amount = Amount > 1 ? Amount- 1 : 1;
-            textBox1.Text = Amount.ToString();
         }
     }
 }
