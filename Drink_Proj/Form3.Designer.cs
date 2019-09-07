@@ -49,7 +49,7 @@
             this.button15 = new System.Windows.Forms.Button();
             this.gSize = new System.Windows.Forms.GroupBox();
             this.btnsubfrm = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
+            this.confirm = new System.Windows.Forms.Button();
             this.gIce.SuspendLayout();
             this.gSugar.SuspendLayout();
             this.gSize.SuspendLayout();
@@ -271,21 +271,22 @@
             this.btnsubfrm.UseVisualStyleBackColor = true;
             this.btnsubfrm.Click += new System.EventHandler(this.Btnsubfrm_Click);
             // 
-            // button8
+            // confirm
             // 
-            this.button8.Location = new System.Drawing.Point(412, 610);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(136, 112);
-            this.button8.TabIndex = 6;
-            this.button8.Text = "確定";
-            this.button8.UseVisualStyleBackColor = true;
+            this.confirm.Location = new System.Drawing.Point(412, 610);
+            this.confirm.Name = "confirm";
+            this.confirm.Size = new System.Drawing.Size(136, 112);
+            this.confirm.TabIndex = 6;
+            this.confirm.Text = "確定";
+            this.confirm.UseVisualStyleBackColor = true;
+            this.confirm.Click += new System.EventHandler(this.confirm_Click);
             // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(775, 841);
-            this.Controls.Add(this.button8);
+            this.Controls.Add(this.confirm);
             this.Controls.Add(this.btnsubfrm);
             this.Controls.Add(this.gSize);
             this.Controls.Add(this.gSugar);
@@ -326,6 +327,6 @@
         private System.Windows.Forms.Button button15;
         private System.Windows.Forms.GroupBox gSize;
         private System.Windows.Forms.Button btnsubfrm;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button confirm;
     }
 }

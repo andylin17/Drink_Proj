@@ -17,21 +17,27 @@ namespace Drink_Proj
         {
             InitializeComponent();
             this.drink = drink;
-            listType.AddRange(drink.Sugar?.ToList());
+            this.TotalMoney += new MoneyCalculate(GetPrice);
+            //先這樣
+            List<string> a = new List<string>();
+            listType.AddRange(drink.Sugar.ToList() ?? a);
             listType.AddRange(drink.Ice.ToList());
             listType.AddRange(drink.Size.ToList());
+            confirm.DialogResult = DialogResult.OK;
             Bind();
         }
         
         BtnData drink = new BtnData();
         private BtnData btnData;
         private List<string> listType = new List<string>();
-        private Dictionary<string, Control> dicDrink = new Dictionary<string, Control>();
         private int Amount = 1;
         //用來插入 ListViewItem
         public string[] lvItem { get; set; }
-        //配料名稱
-        public string subname { get; set; }
+        public int Money { get; set; }
+        public int iTotalPrice { get; set; }
+        public int iSizePrice { get; set; }
+        public string sform2subname { get; set; }
+
         //存放選取的屬性
         string sDrinkIce;
         string sDrinkSugar;
@@ -47,7 +53,6 @@ namespace Drink_Proj
             //綁定事件
             button.ForEach(x => {
                 x.Click += new EventHandler(Button_Click);      
-                dicDrink.Add(x.Text, control); //加入字典，做Group分類
                 x.Enabled = listType?.Contains<string>(x.Text) ?? false; //判斷是否有這屬性
             });
         }
@@ -55,24 +60,21 @@ namespace Drink_Proj
         public override void Button_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
-            Control sGroup = FindInDictionary(btn.Text);
-            sDrinkIce = sGroup.Name == "gIce" ? btn.Text : sDrinkIce;
-            sDrinkSugar = sGroup.Name == "gSugar" ? btn.Text : sDrinkSugar;
-            sDrinkSize = sGroup.Name == "gSize" ? btn.Text : sDrinkSize ;
-            ChangColor(btn.Text, sGroup);
+            sDrinkIce = btn.Parent.Name == "gIce" ? btn.Text : sDrinkIce;
+            sDrinkSugar = btn.Parent.Name == "gSugar" ? btn.Text : sDrinkSugar;
+            sDrinkSize = btn.Parent.Name == "gSize" ? btn.Text : sDrinkSize ;
+            if(!string.IsNullOrEmpty(sDrinkSize))
+            {
+                switch (sDrinkSize)
+                {
+                    case "特大": iSizePrice = 10; break;
+                    case "大杯": iSizePrice = 5; break;
+                    case "中杯": iSizePrice = 0; break;
+                }
+            }
+            ChangColor(btn.Text, btn.Parent);
         }
         
-        private Control FindInDictionary(string FindMe)
-        {
-            if (dicDrink.ContainsKey(FindMe))
-            {
-                return dicDrink[FindMe];
-            }
-            else
-            {
-                return null;
-            }
-        }
         private void ChangColor(string btntext , Control control)
         {
             var button = control.Controls.OfType<Button>().ToList();
@@ -85,10 +87,14 @@ namespace Drink_Proj
         private void confirm_Click(object sender, EventArgs e)
         {
             DoCalculate(btnData?.Price ?? 0);//if nul that 0
-            //lvItem = new string[] {
-                //drink.Text + f +subname,
-                //textBox1.Text,
-                //Money.ToString() };
+            lvItem = new string[] {
+                drink.Text + sform2subname + "   " + sDrinkSugar + sDrinkIce + "  " + sDrinkSize,
+                textBox1.Text,
+                iTotalPrice.ToString() };
+        }
+        public void GetPrice(int price)
+        {
+            iTotalPrice = (drink.Price + price + iSizePrice + Money) * Amount;
         }
         //數量+1
         private void up_Click(object sender, EventArgs e)
@@ -106,6 +112,11 @@ namespace Drink_Proj
         private void Btnsubfrm_Click(object sender, EventArgs e)
         {
             subForm form2 = new subForm(drink);
+            if (form2.ShowDialog() == DialogResult.OK)
+            {
+                sform2subname = form2.subname;
+                this.Money = form2.Money;
+            }
         }
     }
 }
