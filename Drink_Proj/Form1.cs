@@ -33,7 +33,9 @@ namespace Drink_Proj
             BtnData btnData = btnDatas.Where(x => x.Text == btn.Text).SingleOrDefault();
             if (btnData == null)
                 return;
-            subForm form2 = new subForm(btnData);
+            //subForm form2 = new subForm(btnData);
+            DrinkData drinkdata = new DrinkData(btnData);
+            Form2 form2 = new Form2(drinkdata);
             this.Enabled = false;
             if(form2.ShowDialog() == DialogResult.OK)
             {
@@ -45,7 +47,7 @@ namespace Drink_Proj
         }
         private void BtnBuy_Click(object sender, EventArgs e)
         {
-
+            
         }
         public void GetPrice(int price)
         {

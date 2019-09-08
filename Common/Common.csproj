@@ -52,9 +52,6 @@
     </Compile>
     <Compile Include="BtnData.cs" />
     <Compile Include="DrinkData.cs" />
-    <Compile Include="NewButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

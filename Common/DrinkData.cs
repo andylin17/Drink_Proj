@@ -6,23 +6,23 @@ using System.Threading.Tasks;
 
 namespace Common
 {
-    public class DrinkData : BtnData
+    public class DrinkData
     {
-        public enum Suger
+        public DrinkData(BtnData btn)
         {
-            regular = 10,
-            less = 7,
-            half = 5,
-            light = 3,
-            non = 0
+            Index = btn.Index;
+            Text = btn.Text;
+            Price = btn.Price;
+            Group = btn.Group;
         }
-        public enum Ice
-        {
-            regular = 10,
-            less = 7,
-            half = 5,
-            light = 3,
-            non = 0
-        }
+        public string Index { get; set; }
+        public string Text { get; set; }
+        public int Price { get; set; }
+        public string Group { get; set; }
+        public string 糖度 { get; set; }
+        public string 冰塊 { get; set; }
+        public string 大小 { get; set; }
+        public string stuffname { get; set; }
+        public int stuffprice { get; set; }
     }
 }
