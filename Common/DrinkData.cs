@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*/////////////////////////////////////
+
+    飲料物件
+    儲存所有相關屬性
+    用於傳遞、計算、顯示
+
+/*/////////////////////////////////////
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +16,7 @@ namespace Common
 {
     public class DrinkData
     {
-        public DrinkData(BtnData btn)
+        public DrinkData(BtnData btn)//建構..取得飲料按鈕的所有屬性
         {
             var properties = btn.GetType().GetProperties().ToList();
             properties.ForEach(x => this.GetType().GetProperty(x.Name).SetValue(this, x.GetValue(btn)));

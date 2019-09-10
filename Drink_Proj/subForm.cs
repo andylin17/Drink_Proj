@@ -1,4 +1,9 @@
-﻿using Common;
+﻿/*/////////////////////////////////////
+
+    配料視窗
+    獲取配料名稱、價格
+/*/////////////////////////////////////
+using Common;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,7 +35,7 @@ namespace Drink_Proj
             Button btn = (Button)sender;
             stuffData = btnDatas.Where(x => x.Text == btn.Text).SingleOrDefault();
         }
-        //關掉視窗時，存ListViewItem 字串[]
+        //關掉視窗時，存配料屬性
         private void confirm_Click(object sender, EventArgs e)
         {
             drink.stuffname = stuffData?.Text ?? "";

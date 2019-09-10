@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*/////////////////////////////////////
+
+    飲料附屬性視窗
+    選擇飲料附屬性
+    計算單筆價格
+
+/*/////////////////////////////////////
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,10 +34,10 @@ namespace Drink_Proj
             //註冊計算價格事件
             this.TotalMoney += new MoneyCalculate(GetPrice);
         }
-
+        //傳進來的飲料物件
         DrinkData drink;
+        //飲料屬性 物件
         private BtnData proData;
-        public subForm form2 { get; set; }
 
         //private new void Bind()
         //{
@@ -77,7 +84,11 @@ namespace Drink_Proj
             //////end
             ChangColor(btn.Text, btn.Parent);
         }
-
+        /// <summary>
+        /// 按下按鈕後更改顏色
+        /// </summary>
+        /// <param name="btntext">button text屬性</param>
+        /// <param name="control">父容器</param>
         private void ChangColor(string btntext , Control control)
         {
             var button = control.Controls.OfType<Button>().ToList();
@@ -111,14 +122,15 @@ namespace Drink_Proj
 
         private void Btnsubfrm_Click(object sender, EventArgs e)
         {
-            form2 = new subForm(drink);
-            form2.ShowDialog();
+            subForm subform = new subForm(drink);
+            subform.ShowDialog();
             //if (form2.ShowDialog() == DialogResult.OK)
             //{
             //    sform2subname = form2.subname;
             //    this.Money = form2.Money;
             //}
         }
+        //價格計算
         public void GetPrice()
         {
             drink.Price = (drink.Price + drink.sizePrice + drink.stuffprice) * drink.Amount;

@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*/////////////////////////////////////
+
+    主視窗
+
+/*/////////////////////////////////////
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -34,7 +39,7 @@ namespace Drink_Proj
             BtnData btnData = btnDatas.Where(x => x.Text == btn.Text).SingleOrDefault();
             if (btnData == null)
                 return;
-            //subForm form2 = new subForm(btnData);
+            //創建 飲料物件
             drinkdata = new DrinkData(btnData);
             Form2 form2 = new Form2(drinkdata);
             this.Enabled = false;
@@ -47,13 +52,17 @@ namespace Drink_Proj
             }
             this.Enabled = true;
         }
-
+        /// <summary>
+        /// 總價計算
+        /// </summary>
         public void GetPrice()
         {
             iTotalPrice += drinkdata.Price;
             txtTotalPrice.Text = iTotalPrice.ToString();
         }
-
+        /// <summary>
+        /// listView add item
+        /// </summary>
         public void SetList()
         {
             ListViewItem item = new ListViewItem(new string[]
@@ -67,6 +76,7 @@ namespace Drink_Proj
             });
             listView1.Items.Add(item);
         }
+        //關閉釋放資源
         public override void Form_Closing(object sender, FormClosingEventArgs e)
         {
             this.Dispose();

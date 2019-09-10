@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*/////////////////////////////////////
+
+    基底頁面
+    頁面共用邏輯
+
+/*/////////////////////////////////////
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -26,12 +32,19 @@ namespace Common
             foreach(var groupBox in this.FindForm().Controls.OfType<GroupBox>())
                 SetButtonEvent(groupBox);
         }
-
+        /// <summary>
+        /// 視窗關閉前，觸發計算事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public virtual void Form_Closing(object sender, FormClosingEventArgs e)
         {
             DoCalculate();
         }
-
+        /// <summary>
+        /// 設置 Button
+        /// </summary>
+        /// <param name="control"></param>
         private void SetButtonEvent(Control control)
         {
             //取得form下的Button控制項
