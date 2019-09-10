@@ -17,7 +17,6 @@ namespace Drink_Proj
         {
             InitializeComponent();
             this.drink = drink;
-            this.TotalMoney += new MoneyCalculate(GetPrice);
             //先這樣
             //List<string> a = new List<string>();
             //listType.AddRange(drink.Sugar.ToList() ?? a);
@@ -25,24 +24,13 @@ namespace Drink_Proj
             //listType.AddRange(drink.Size.ToList());
             confirm.DialogResult = DialogResult.OK;
             Bind();
+            //註冊計算價格事件
+            this.TotalMoney += new MoneyCalculate(GetPrice);
         }
 
         DrinkData drink;
         private BtnData proData;
-        private List<string> listType = new List<string>();
-        private int Amount = 1;
-        //用來插入 ListViewItem
         public subForm form2 { get; set; }
-        public string[] lvItem { get; set; }
-        public int Money { get; set; }
-        public int iTotalPrice { get; set; }
-        public int iSizePrice { get; set; }
-        public string sform2subname { get; set; }
-
-        //存放選取的屬性
-        string sDrinkIce;
-        string sDrinkSugar;
-        string sDrinkSize;
 
         //private new void Bind()
         //{
@@ -85,6 +73,7 @@ namespace Drink_Proj
             //反射方法 設定屬性
             var property = drink.GetType().GetProperty(proData.Group);
             property.SetValue(drink,proData.Text);
+            drink.sizePrice = proData.Price == 0 ? drink.sizePrice : proData.Price;
             //////end
             ChangColor(btn.Text, btn.Parent);
         }
@@ -101,27 +90,23 @@ namespace Drink_Proj
 
         private void confirm_Click(object sender, EventArgs e)
         {
-            lvItem = new string[] {
-                drink.Text + sform2subname + "   " + sDrinkSugar + sDrinkIce + "  " + sDrinkSize,
-                textBox1.Text,
-                iTotalPrice.ToString()
-            };
-        }
-        public void GetPrice(int price)
-        {
-            iTotalPrice = (drink.Price + price + iSizePrice + Money) * Amount;
+            //lvItem = new string[] {
+            //    drink.Text + sform2subname + "   " + sDrinkSugar + sDrinkIce + "  " + sDrinkSize,
+            //    textBox1.Text,
+            //    iTotalPrice.ToString()
+            //};
         }
         //數量+1
         private void up_Click(object sender, EventArgs e)
         {
-            Amount += 1;
-            textBox1.Text = Amount.ToString();
+            drink.Amount += 1;
+            textBox1.Text = drink.Amount.ToString();
         }
         //數量-1
         private void down_Click(object sender, EventArgs e)
         {
-            Amount = Amount > 1 ? Amount - 1 : 1;
-            textBox1.Text = Amount.ToString();
+            drink.Amount = drink.Amount > 1 ? drink.Amount - 1 : 1;
+            textBox1.Text = drink.Amount.ToString();
         }
 
         private void Btnsubfrm_Click(object sender, EventArgs e)
@@ -134,5 +119,10 @@ namespace Drink_Proj
             //    this.Money = form2.Money;
             //}
         }
+        public void GetPrice()
+        {
+            drink.Price = (drink.Price + drink.sizePrice + drink.stuffprice) * drink.Amount;
+        }
+
     }
 }

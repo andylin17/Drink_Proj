@@ -11,7 +11,7 @@ namespace Common
 {
     public class BaseForm:Form
     {
-        public delegate void MoneyCalculate(int i);
+        public delegate void MoneyCalculate();
 
         public event MoneyCalculate TotalMoney;
 
@@ -22,9 +22,16 @@ namespace Common
         public void Bind()
         {
             btnDatas = GetBtnData();
+            this.FormClosing += Form_Closing;
             foreach(var groupBox in this.FindForm().Controls.OfType<GroupBox>())
                 SetButtonEvent(groupBox);
         }
+
+        public virtual void Form_Closing(object sender, FormClosingEventArgs e)
+        {
+            DoCalculate();
+        }
+
         private void SetButtonEvent(Control control)
         {
             //取得form下的Button控制項
@@ -64,9 +71,10 @@ namespace Common
         /// 觸發 TotalMoney 事件
         /// </summary>
         /// <param name="price"></param>
-        public void DoCalculate(int price)
+        public void DoCalculate()
         {
-            TotalMoney?.Invoke(price);
+            TotalMoney?.Invoke();
         }
+        
     }
 }

@@ -14,6 +14,7 @@ namespace Drink_Proj
     public partial class MainForm : BaseForm
     {
         int iTotalPrice = 0;
+        DrinkData drinkdata;
         public MainForm()
         {
             InitializeComponent();
@@ -34,25 +35,41 @@ namespace Drink_Proj
             if (btnData == null)
                 return;
             //subForm form2 = new subForm(btnData);
-            DrinkData drinkdata = new DrinkData(btnData);
+            drinkdata = new DrinkData(btnData);
             Form2 form2 = new Form2(drinkdata);
             this.Enabled = false;
             if(form2.ShowDialog() == DialogResult.OK)
             {
-                ListViewItem lvi = new ListViewItem(form2.lvItem);
-                listView1.Items.Add(lvi);
-                DoCalculate(form2.Money);
+                //ListViewItem lvi = new ListViewItem(form2.lvItem);
+                //listView1.Items.Add(lvi);
+                SetList();
+                DoCalculate();
             }
             this.Enabled = true;
         }
-        private void BtnBuy_Click(object sender, EventArgs e)
+
+        public void GetPrice()
         {
-            
-        }
-        public void GetPrice(int price)
-        {
-            iTotalPrice += price;
+            iTotalPrice += drinkdata.Price;
             txtTotalPrice.Text = iTotalPrice.ToString();
+        }
+
+        public void SetList()
+        {
+            ListViewItem item = new ListViewItem(new string[]
+            {
+                drinkdata.Text + (string.IsNullOrEmpty(drinkdata.stuffname)?"":"+"+drinkdata.stuffname),
+                drinkdata.糖度,
+                drinkdata.冰塊,
+                drinkdata.大小,
+                drinkdata.Amount.ToString(),
+                drinkdata.Price.ToString()
+            });
+            listView1.Items.Add(item);
+        }
+        public override void Form_Closing(object sender, FormClosingEventArgs e)
+        {
+            this.Dispose();
         }
     }
 }

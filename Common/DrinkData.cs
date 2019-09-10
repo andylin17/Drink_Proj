@@ -10,10 +10,9 @@ namespace Common
     {
         public DrinkData(BtnData btn)
         {
-            Index = btn.Index;
-            Text = btn.Text;
-            Price = btn.Price;
-            Group = btn.Group;
+            var properties = btn.GetType().GetProperties().ToList();
+            properties.ForEach(x => this.GetType().GetProperty(x.Name).SetValue(this, x.GetValue(btn)));
+            Amount = 1;
         }
         public string Index { get; set; }
         public string Text { get; set; }
@@ -22,7 +21,9 @@ namespace Common
         public string 糖度 { get; set; }
         public string 冰塊 { get; set; }
         public string 大小 { get; set; }
+        public int sizePrice { get; set; }
         public string stuffname { get; set; }
         public int stuffprice { get; set; }
+        public int Amount { get; set; }
     }
 }
